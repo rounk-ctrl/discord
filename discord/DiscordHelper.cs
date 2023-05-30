@@ -15,6 +15,8 @@ namespace discord
 	internal class DiscordHelper
 	{
 		public static string token;
+		public static List<Tuple<string, string>> dataSet;
+		public static string id;
 		private static readonly Uri _baseUri = new Uri("https://discord.com/api/v9/", UriKind.Absolute);
 		public static async Task<HttpResponseMessage> GetResponseAsync(string url, CancellationToken cancellationToken)
 		{

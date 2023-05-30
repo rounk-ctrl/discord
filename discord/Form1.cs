@@ -200,7 +200,7 @@ namespace discord
 					if (!heartbeatRecieved)
 					{
 						heartbeatRecieved = true;
-						int ok = 125;
+						int ok = 512;
 						client.Send("{\"op\":2,\"d\":" + "{\"token\":\"" + DiscordHelper.token + "\",\"intents\":" + ok.ToString() + ",\"properties\":{\"os\":\"Linux\",\"browser\":\"Chrome\",\"device\":\"\"}}}");
 					}
 				}
@@ -210,6 +210,8 @@ namespace discord
 				}
 				else if (hb.t == "MESSAGE_CREATE")
 				{
+					//hb = JSON.ToObject<OpCode>(msg.Text);
+					//Message mes = JSON.ToObject<Message>(hb.d);
 					MessageBox.Show(msg.Text);
 				}
 			}));
@@ -243,17 +245,17 @@ namespace discord
 		{
 			if (listView2.FocusedItem == null) return;
 			int p = listView2.FocusedItem.Index;
-			string id = listView2.FocusedItem.Tag.ToString();
-			var Response = await DiscordHelper.GetResponseAsync("channels/" + id + "/messages", CancellationToken.None);
+			DiscordHelper.id = listView2.FocusedItem.Tag.ToString();
+			var Response = await DiscordHelper.GetResponseAsync("channels/" + DiscordHelper.id + "/messages", CancellationToken.None);
 			Message[] messages = JSON.ToObject<Message[]>(Response.Content.ReadAsStringAsync().Result);
-			var dataSet = new List<Tuple<string, string>>();
+			DiscordHelper.dataSet = new List<Tuple<string, string>>();
 
 			foreach (var mes in messages)
 			{
-				dataSet.Add(new Tuple<string, string>(mes.author.username, mes.content));
+				DiscordHelper.dataSet.Add(new Tuple<string, string>(mes.author.username, mes.content));
 			}
-			dataSet.Reverse();
-			listBox1.DataSource = dataSet;
+			DiscordHelper.dataSet.Reverse();
+			listBox1.DataSource = DiscordHelper.dataSet;
 			if (!textBox1.Visible)
 			{
 				textBox1.Visible = true;

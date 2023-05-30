@@ -9,22 +9,22 @@ namespace discord
         public string username { get; set; }
         public string discriminator { get; set; }
         public string avatar { get; set; }
-        public object? avatar_decoration { get; set; }
-        public bool? bot { get; set; }
-        public bool? system { get; set; }
-        public bool? mfa_enabled { get; set; }
-        public object? banner { get; set; }
-        public int? accent_color { get; set; }
-        public string? locale { get; set; }
-        public bool? verified { get; set; }
+        public object avatar_decoration { get; set; }
+        public bool bot { get; set; }
+        public bool system { get; set; }
+        public bool mfa_enabled { get; set; }
+        public object banner { get; set; }
+        public int accent_color { get; set; }
+        public string locale { get; set; }
+        public bool verified { get; set; }
         public string email { get; set; }
-        public int? flags { get; set; }
-        public int? premium_type { get; set; }
-        public int? public_flags { get; set; }
-        public string? banner_color { get; set; }
-        public string? bio { get; set; }
+        public int flags { get; set; }
+        public int premium_type { get; set; }
+        public int public_flags { get; set; }
+        public string banner_color { get; set; }
+        public string bio { get; set; }
         public bool? nsfw_allowed { get; set; }
-        public string? phone { get; set; }
+        public string phone { get; set; }
     }
     #endregion
     #region Server
@@ -211,15 +211,15 @@ namespace discord
 	#region OpCode
     public class OpCode
 	{
-        public string? t { get; set; }
-        public string? s { get; set; }
+        public string t { get; set; }
+        public string s { get; set; }
         public int op { get; set; }
         public HeartBeat d { get; set; }
 	}
     public class MsgCreate
     {
-        public string? t { get; set; }
-        public string? s { get; set; }
+        public string t { get; set; }
+        public string s { get; set; }
         public int op { get; set; }
         public HeartBeat d { get; set; }
     }
